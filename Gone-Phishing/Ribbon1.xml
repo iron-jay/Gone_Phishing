@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2009/07/customui" onLoad="Ribbon_Load">
+	<ribbon>
+		<tabs>
+			<tab idMso="TabMail">
+				<group id="SPAM" label="Gone Phishing">
+					<button id="Phishing"
+                            label="Report Phishing"
+                            getImage="ButtonImage_Phish"
+                            size="large"
+                            onAction="OnButtonClick_Phish"
+                            screentip="Report Phishing Email"
+                            supertip="Forward selected email to report phishing attempts" />
+				</group>
+			</tab>
+		</tabs>
+	</ribbon>
+</customUI>
