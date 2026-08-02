@@ -1,0 +1,38 @@
+<!--
+  Pinned to WiX 5: v6 and v7 require accepting the Open Source Maintenance Fee EULA, which is a
+  licensing decision rather than a build one. v5 is MS-RL with no such gate.
+-->
+<Project Sdk="WixToolset.Sdk/5.0.2">
+  <PropertyGroup>
+    <OutputName>GonePhishing</OutputName>
+    <!--
+      One package, both Office bitnesses. The x64 package writes the add-in registration to the
+      native view and, via a Bitness="always32" component, to WOW6432Node as well - so a single
+      MSI serves 32-bit and 64-bit Outlook alike. It does require 64-bit Windows.
+    -->
+    <Platforms>x64</Platforms>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
+    <OutputPath>bin\$(Platform)\$(Configuration)\</OutputPath>
+    <!--
+      ICE61 objects to AllowSameVersionUpgrades, which is set deliberately in Package.wxs so a
+      rebuild at the same version replaces the installed product instead of stacking beside it.
+    -->
+    <!--
+      ICE61 objects to AllowSameVersionUpgrades, which is set deliberately in Package.wxs so a
+      rebuild at the same version replaces the installed product instead of stacking beside it.
+
+      ICE69 objects to the 32-bit registration's CodeBase pointing at a file owned by the 64-bit
+      component. That is the whole point: one AnyCPU assembly on disk, registered into both
+      registry views. Both components are in the same feature, so they install and remove together.
+    -->
+    <SuppressIces>ICE61;ICE69</SuppressIces>
+  </PropertyGroup>
+  <!--
+    The add-in is AnyCPU, so both packages carry the same binary. Build it first:
+      msbuild "Gone-Phishing/Gone Phishing.csproj" /t:Build /p:Configuration=Release
+  -->
+  <ItemGroup>
+    <BindPath Include="..\Gone-Phishing\bin\$(Configuration)\" />
+  </ItemGroup>
+</Project>

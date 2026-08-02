@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitionResources xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                           revision="1.0"
+                           schemaVersion="1.0"
+                           xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+
+  <displayName>Gone Phishing</displayName>
+  <description>Settings for the Gone Phishing Outlook add-in.</description>
+
+  <resources>
+    <stringTable>
+
+      <string id="SUPPORTED_GonePhishing_1_0">Gone Phishing 1.0 or later</string>
+
+      <string id="IronJay">iron-jay</string>
+      <string id="GonePhishing">Gone Phishing</string>
+      <string id="GonePhishing_Explain">Settings for the Gone Phishing Outlook add-in, which lets users report suspicious email to a nominated address.</string>
+
+      <string id="ReportTo">Reporting address</string>
+      <string id="ReportTo_Explain">Sets the address that reported email is forwarded to.
+
+If you enable this setting, the Report Phishing button sends reports to the address you specify. This overrides any address chosen at install time, so a fleet can be retargeted without reinstalling.
+
+If you disable or do not configure this setting, the add-in uses the address written by the installer. If no address is configured anywhere, the add-in tells the user it is not configured and sends nothing.
+
+Applying this at computer scope takes precedence over user scope.</string>
+
+      <string id="Prefix">Subject line prefix</string>
+      <string id="Prefix_Explain">Sets text prepended to the subject line of each report.
+
+If you enable this setting, the text you specify is added to the front of the reported message's subject, which is useful for mail rules and triage queues on the receiving side. Include a trailing space if you want one.
+
+If you disable or do not configure this setting, the add-in uses the prefix written by the installer, or no prefix if none was set.
+
+Applying this at computer scope takes precedence over user scope.</string>
+
+    </stringTable>
+
+    <presentationTable>
+
+      <presentation id="ReportTo">
+        <textBox refId="ReportTo_Text">
+          <label>Forward reported email to:</label>
+        </textBox>
+      </presentation>
+
+      <presentation id="Prefix">
+        <textBox refId="Prefix_Text">
+          <label>Prepend to subject line:</label>
+        </textBox>
+      </presentation>
+
+    </presentationTable>
+  </resources>
+</policyDefinitionResources>

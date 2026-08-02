@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<policyDefinitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   revision="1.0"
+                   schemaVersion="1.0"
+                   xmlns="http://schemas.microsoft.com/GroupPolicy/2006/07/PolicyDefinitions">
+
+  <policyNamespaces>
+    <target prefix="gonephishing" namespace="IronJay.Policies.GonePhishing" />
+  </policyNamespaces>
+
+  <resources minRequiredRevision="1.0" />
+
+  <supportedOn>
+    <definitions>
+      <definition name="SUPPORTED_GonePhishing_1_0" displayName="$(string.SUPPORTED_GonePhishing_1_0)" />
+    </definitions>
+  </supportedOn>
+
+  <categories>
+    <category name="IronJay" displayName="$(string.IronJay)" />
+    <category name="GonePhishing" displayName="$(string.GonePhishing)" explainText="$(string.GonePhishing_Explain)">
+      <parentCategory ref="IronJay" />
+    </category>
+  </categories>
+
+  <policies>
+
+    <!--
+      class="Both" so the setting can be applied per-machine or per-user. The add-in gives
+      machine policy precedence over user policy.
+    -->
+    <policy name="ReportTo"
+            class="Both"
+            displayName="$(string.ReportTo)"
+            explainText="$(string.ReportTo_Explain)"
+            key="Software\Policies\iron-jay\GonePhishing"
+            presentation="$(presentation.ReportTo)">
+      <parentCategory ref="GonePhishing" />
+      <supportedOn ref="SUPPORTED_GonePhishing_1_0" />
+      <elements>
+        <text id="ReportTo_Text" valueName="ReportTo" required="true" maxLength="255" />
+      </elements>
+    </policy>
+
+    <policy name="Prefix"
+            class="Both"
+            displayName="$(string.Prefix)"
+            explainText="$(string.Prefix_Explain)"
+            key="Software\Policies\iron-jay\GonePhishing"
+            presentation="$(presentation.Prefix)">
+      <parentCategory ref="GonePhishing" />
+      <supportedOn ref="SUPPORTED_GonePhishing_1_0" />
+      <elements>
+        <text id="Prefix_Text" valueName="Prefix" required="false" maxLength="255" />
+      </elements>
+    </policy>
+
+  </policies>
+</policyDefinitions>

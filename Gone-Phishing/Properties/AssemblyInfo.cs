@@ -9,7 +9,7 @@ using System.Security;
 [assembly: AssemblyTitle("Gone Phishing")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Unisys")]
+[assembly: AssemblyCompany("iron-jay")]
 [assembly: AssemblyProduct("Gone_Phishing")]
 [assembly: AssemblyCopyright("Copyright ©  2024")]
 [assembly: AssemblyTrademark("")]
@@ -33,6 +33,17 @@ using System.Security;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
+// AssemblyVersion is pinned: it is baked into the COM registration written by the installer
+// (the Assembly value and the InprocServer32\1.0.0.0 subkey), so changing it there and not here
+// unregisters the add-in. AssemblyFileVersion is what Windows Installer compares when deciding
+// whether to replace the file on disk, so that is the one to bump for every release.
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.4.0.0")]
+
+
+
+
+
+
+
 

@@ -3,7 +3,13 @@
 	<ribbon>
 		<tabs>
 			<tab idMso="TabMail">
-				<group id="SPAM" label="Gone Phishing">
+				<!--
+					Office collapses a group to a single drop-down when the window is too narrow
+					to lay it out in full. The group needs an image of its own to show in that
+					state, otherwise the collapsed group is label-only, so it reuses the button's
+					icon here.
+				-->
+				<group id="SPAM" label="Gone Phishing" getImage="ButtonImage_Phish" autoScale="true">
 					<button id="Phishing"
                             label="Report Phishing"
                             getImage="ButtonImage_Phish"
