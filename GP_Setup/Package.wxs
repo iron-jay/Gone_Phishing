@@ -27,7 +27,7 @@
 
   <Package Name="Gone Phishing"
            Manufacturer="iron-jay"
-           Version="1.4.0.0"
+           Version="1.5.0.0"
            UpgradeCode="8F119238-0A06-4A99-8C0E-5E9F7EB9B7E1"
            Scope="perMachine"
            Compressed="yes"
@@ -70,9 +70,12 @@
 
     <StandardDirectory Id="ProgramFiles6432Folder">
       <Directory Id="INSTALLFOLDER" Name="Gone Phishing">
-        <!-- The .adml must sit in a language subfolder beside the .admx, so the layout here
-             mirrors what the Group Policy Central Store expects and can be copied as-is. -->
-        <Directory Id="POLICYLANGFOLDER" Name="en-US" />
+        <!-- The .adml must sit in a language subfolder beside the .admx, so the contents of
+             Policies mirror what the Group Policy Central Store expects and can be copied
+             across as-is. -->
+        <Directory Id="POLICYFOLDER" Name="Policies">
+          <Directory Id="POLICYLANGFOLDER" Name="en-US" />
+        </Directory>
       </Directory>
     </StandardDirectory>
 
@@ -199,7 +202,7 @@
         Shipped for the administrator to copy into the domain Central Store; installing them here
         does not itself put any policy into effect.
       -->
-      <Component Id="PolicyTemplate" Directory="INSTALLFOLDER">
+      <Component Id="PolicyTemplate" Directory="POLICYFOLDER">
         <File Id="GonePhishingAdmx" Source="..\Policies\GonePhishing.admx" KeyPath="yes" />
       </Component>
 
@@ -211,6 +214,7 @@
 
   </Package>
 </Wix>
+
 
 
 

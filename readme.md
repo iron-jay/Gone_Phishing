@@ -59,12 +59,12 @@ The administrative template lets the two settings be managed from the Group Poli
 than as raw registry values. The MSI installs it beside the assembly:
 
 ```
-C:\Program Files\Gone Phishing\GonePhishing.admx
-C:\Program Files\Gone Phishing\en-US\GonePhishing.adml
+C:\Program Files\Gone Phishing\Policies\GonePhishing.admx
+C:\Program Files\Gone Phishing\Policies\en-US\GonePhishing.adml
 ```
 
-Installing it doesn't put any policy into effect — copy the pair, keeping the `en-US` subfolder,
-into the domain Central Store:
+Installing it doesn't put any policy into effect — copy the contents of `Policies`, keeping the
+`en-US` subfolder, into the domain Central Store:
 
 ```
 \\<domain>\SYSVOL\<domain>\Policies\PolicyDefinitions\GonePhishing.admx
