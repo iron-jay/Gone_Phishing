@@ -38,7 +38,8 @@ using System.Security;
 // unregisters the add-in. AssemblyFileVersion is what Windows Installer compares when deciding
 // whether to replace the file on disk, so that is the one to bump for every release.
 [assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.5.0.0")]
+[assembly: AssemblyFileVersion("1.6.0.0")]
+
 
 
 
